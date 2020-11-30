@@ -1,87 +1,87 @@
 apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: azure-test
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+kind: Deployment
+metadata:
+  name: azure-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
         app: azure-test
-    strategy:
-      rollingUpdate:
-        maxSurge: 1
-        maxUnavailable: 1
-    minReadySeconds: 5
-    template:
-      metadata:
-        labels:
-          app: azure-test
-      spec:
-        nodeSelector:
-          "beta.kubernetes.io/os": linux
-        containers:
-          - name: azure-test
-            image: ${{parameters.analyticsapidev.newDockerImage}}
-            env:
-              - name: datasource.username
-                valueFrom:
-                  secretKeyRef:
-                    key: datasource.username
-                    name: analytics-secret-7c9dm5m24g
-              - name: datasource.password
-                valueFrom:
-                  secretKeyRef:
-                    key: datasource.password
-                    name: analytics-secret-7c9dm5m24g
-              - name: datasource.url
-                valueFrom:
-                  secretKeyRef:
-                    key: datasource.url
-                    name: analytics-secret-7c9dm5m24g
-              - name: kusto.applicationClientId
-                valueFrom:
-                  secretKeyRef:
-                    key: kusto.applicationClientId
-                    name: analytics-secret-7c9dm5m24g
-              - name: kusto.applicationKey
-                valueFrom:
-                  secretKeyRef:
-                    key: kusto.applicationKey
-                    name: analytics-secret-7c9dm5m24g
-              - name: kusto.authorityId
-                valueFrom:
-                  secretKeyRef:
-                    key: kusto.authorityId
-                    name: analytics-secret-7c9dm5m24g
-              - name: kusto.resourceUri
-                valueFrom:
-                  secretKeyRef:
-                    key: kusto.resourceUri
-                    name: analytics-secret-7c9dm5m24g
-              - name: kusto.database
-                valueFrom:
-                  secretKeyRef:
-                    key: kusto.database
-                    name: analytics-secret-7c9dm5m24g
-              - name: security.jwks
-                valueFrom:
-                  secretKeyRef:
-                    key: security.jwks
-                    name: analytics-secret-7c9dm5m24g
-              - name: security.jwksIssuer
-                valueFrom:
-                  secretKeyRef:
-                    key: security.jwksIssuer
-                    name: analytics-secret-7c9dm5m24g
-              - name: logging.level.org.wso2.choreo.analytics.api
-                value: DEBUG
-              - name: REDIS
-                  value: "azure-test"
-            ports:
-              - containerPort: 8080
-            resources:
-              requests:
-                cpu: 250m
-              limits:
-                cpu: 500m
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+        - name: azure-test
+          image: ruks/analytics-api:master-56ed84670248a42343469065fe1181ff7fa0f032
+          env:
+            - name: datasource.username
+              valueFrom:
+                secretKeyRef:
+                  key: datasource.username
+                  name: analytics-secret-7c9dm5m24g
+            - name: datasource.password
+              valueFrom:
+                secretKeyRef:
+                  key: datasource.password
+                  name: analytics-secret-7c9dm5m24g
+            - name: datasource.url
+              valueFrom:
+                secretKeyRef:
+                  key: datasource.url
+                  name: analytics-secret-7c9dm5m24g
+            - name: kusto.applicationClientId
+              valueFrom:
+                secretKeyRef:
+                  key: kusto.applicationClientId
+                  name: analytics-secret-7c9dm5m24g
+            - name: kusto.applicationKey
+              valueFrom:
+                secretKeyRef:
+                  key: kusto.applicationKey
+                  name: analytics-secret-7c9dm5m24g
+            - name: kusto.authorityId
+              valueFrom:
+                secretKeyRef:
+                  key: kusto.authorityId
+                  name: analytics-secret-7c9dm5m24g
+            - name: kusto.resourceUri
+              valueFrom:
+                secretKeyRef:
+                  key: kusto.resourceUri
+                  name: analytics-secret-7c9dm5m24g
+            - name: kusto.database
+              valueFrom:
+                secretKeyRef:
+                  key: kusto.database
+                  name: analytics-secret-7c9dm5m24g
+            - name: security.jwks
+              valueFrom:
+                secretKeyRef:
+                  key: security.jwks
+                  name: analytics-secret-7c9dm5m24g
+            - name: security.jwksIssuer
+              valueFrom:
+                secretKeyRef:
+                  key: security.jwksIssuer
+                  name: analytics-secret-7c9dm5m24g
+            - name: logging.level.org.wso2.choreo.analytics.api
+              value: DEBUG
+            - name: REDIS
+              value: "azure-test"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
 
