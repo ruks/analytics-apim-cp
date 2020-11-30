@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
         - name: azure-test
-          image: ${{parameters.analyticsapidev.newDockerImage}}
+          image: ruks/analytics-api:123
           env:
             - name: DATASOURCE_USERNAME
               valueFrom:
