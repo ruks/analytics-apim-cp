@@ -1,4 +1,4 @@
 bases:
   - ../base
 resources:
-  - sealed-secret.yml
+  - sealedSecret/sealed-secret.yml
