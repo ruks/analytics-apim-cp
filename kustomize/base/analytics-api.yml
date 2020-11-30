@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: azure-test
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+        - name: azure-test
+          image: ruks/analytics-api:latest
+          env:
+            - name: DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: DATASOURCE_USERNAME
+                  name: analytics-secret
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DATASOURCE_PASSWORD
+                  name: analytics-secret
+            - name: DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: DATASOURCE_URL
+                  name: analytics-secret
+            - name: KUSTO_APPLICATION_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: KUSTO_APPLICATION_CLIENT_ID
+                  name: analytics-secret
+            - name: KUSTO_APPLICATION_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: KUSTO_APPLICATION_KEY
+                  name: analytics-secret
+            - name: KUSTO_AUTHORITY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: KUSTO_AUTHORITY_ID
+                  name: analytics-secret
+            - name: KUSTO_RESOURCE_URI
+              valueFrom:
+                secretKeyRef:
+                  key: KUSTO_RESOURCE_URI
+                  name: analytics-secret
+            - name: KUSTO_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: KUSTO_DATABASE
+                  name: analytics-secret
+            - name: SECURITY_JWKS
+              valueFrom:
+                secretKeyRef:
+                  key: SECURITY_JWKS
+                  name: analytics-secret
+            - name: SECURITY_JWKS_ISSUER
+              valueFrom:
+                secretKeyRef:
+                  key: SECURITY_JWKS_ISSUER
+                  name: analytics-secret
+            - name: logging.level.org.wso2.choreo.analytics.api
+              value: DEBUG
+            - name: REDIS
+              value: "azure-test"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
+
