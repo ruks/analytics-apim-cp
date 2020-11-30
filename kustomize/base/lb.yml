@@ -4,7 +4,7 @@ metadata:
   name: analytics-api-lb
 spec:
   selector:
-    run: analytics-api
+    app: azure-test
   ports:
     - port: 80
       targetPort: 8080
