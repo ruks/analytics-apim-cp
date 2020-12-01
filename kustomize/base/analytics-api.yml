@@ -27,52 +27,52 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: DATASOURCE_USERNAME
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: DATASOURCE_PASSWORD
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: DATASOURCE_URL
               valueFrom:
                 secretKeyRef:
                   key: DATASOURCE_URL
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: KUSTO_APPLICATION_CLIENT_ID
               valueFrom:
                 secretKeyRef:
                   key: KUSTO_APPLICATION_CLIENT_ID
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: KUSTO_APPLICATION_KEY
               valueFrom:
                 secretKeyRef:
                   key: KUSTO_APPLICATION_KEY
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: KUSTO_AUTHORITY_ID
               valueFrom:
                 secretKeyRef:
                   key: KUSTO_AUTHORITY_ID
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: KUSTO_RESOURCE_URI
               valueFrom:
                 secretKeyRef:
                   key: KUSTO_RESOURCE_URI
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: KUSTO_DATABASE
               valueFrom:
                 secretKeyRef:
                   key: KUSTO_DATABASE
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: SECURITY_JWKS
               valueFrom:
                 secretKeyRef:
                   key: SECURITY_JWKS
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: SECURITY_JWKS_ISSUER
               valueFrom:
                 secretKeyRef:
                   key: SECURITY_JWKS_ISSUER
-                  name: analytics-secret-mtmmmk85f6
+                  name: analytics-secret-kg9gdkg4g7
             - name: logging.level.org.wso2.choreo.analytics.api
               value: DEBUG
             - name: REDIS
