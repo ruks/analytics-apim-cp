@@ -1,4 +1,4 @@
-namespace: dev-choreo-apim-analytics-api
+namespace: stage-choreo-apim-analytics-api
 resources:
   - namespace.yaml
   - ../base
