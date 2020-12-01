@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
         - name: azure-test
-          image: apimanalytics.azurecr.io/choreo-apim/analytics-api:master-235660e2c810b079accf1455c9fa9ebd1c925ab5
+          image: apimanalytics.azurecr.io/choreo-apim/analytics-api:0000
           env:
             - name: DATASOURCE_USERNAME
               valueFrom:
