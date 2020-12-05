@@ -2,4 +2,4 @@ namespace: dev-choreo-apim-analytics-api
 resources:
   - namespace.yaml
   - ../base
-  - sealedSecret/sealed-secret.yml
+  - sealedSecret
